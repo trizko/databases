@@ -13,7 +13,8 @@ module.exports = {
       var username = req.body.username;
       var message = req.body.message;
       var roomname = req.body.roomname;
-      models.messages.post(username, message, roomname, function() {
+      models.messages.post(username, message, roomname, function(err) {
+        if (err) throw err;
         res.end('');
       });
     } // a function which handles posting a message to the database
